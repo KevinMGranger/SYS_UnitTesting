@@ -38,6 +38,7 @@ There are two transform implementations. One tracks rotations via an axis and an
 and one tracks rotations via a quaternion. These are implementation details that shouldn't
 affect the interface, so it's the perfect candidate for unit testing.
 
+
 I test that two (theoretically) equivalent transforms:
 
 - produce approximately equivalent world matrices, and that
@@ -45,6 +46,7 @@ I test that two (theoretically) equivalent transforms:
 - these matrices transform points approximately equivalently, and
 
 - do the above even after being mutated (rotated further).
+
 
 What could be improved:
 
@@ -55,3 +57,21 @@ What could be improved:
 
 - parallelization (if I'm not afraid to copy around data,
 this is an emberassingly parallel problem)
+
+- true unit testing.
+
+In a proper unit test, you'd have a list of inputs and known proper outputs.
+
+The two implementations would then be given those inputs and run through
+the same operations, and have their outputs compared to the known good values.
+
+Because of the difficulty of computing this on my own (and the relative
+simplicity of each transform implementation), I opted to compare the two, since
+I would be getting known good values from them anyway to start with.
+
+
+Note: When implementing the two, I validated by eye that they were mostly
+equivalent at first. However, I spend an hour trying to figure out why I saw
+radically different values-- only to realize later that -5*10^-8 is roughly
+the same as 1*10^-7 ! If I had written my tests first (as Test Driven
+Development advises), I would not have had this issue!
