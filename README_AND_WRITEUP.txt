@@ -33,3 +33,25 @@ I'm not sure if Catch supports that very well. Perhaps I should write a custom
 test-runner?
 
 # Describe the code and the tests.
+
+There are two transform implementations. One tracks rotations via an axis and an angle,
+and one tracks rotations via a quaternion. These are implementation details that shouldn't
+affect the interface, so it's the perfect candidate for unit testing.
+
+I test that two (theoretically) equivalent transforms:
+
+- produce approximately equivalent world matrices, and that
+
+- these matrices transform points approximately equivalently, and
+
+- do the above even after being mutated (rotated further).
+
+What could be improved:
+
+- many more permutations of data!
+(Catch doesn't have generation yet, but they're working on it)
+
+- testing after other mutations and combinations thereof
+
+- parallelization (if I'm not afraid to copy around data,
+this is an emberassingly parallel problem)
