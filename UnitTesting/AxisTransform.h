@@ -15,5 +15,9 @@ struct AxisTransform
 };
 
 void make_worldmatrix(AxisTransform const&, XMFLOAT4X4&);
+
+/// rotate by a number of degrees around the current axis of rotation.
+void rotate_degrees(AxisTransform &, float);
+
 XMFLOAT4X4 make_worldmatrix(AxisTransform const&);
 ostream& operator<<(ostream& os, AxisTransform const& at);

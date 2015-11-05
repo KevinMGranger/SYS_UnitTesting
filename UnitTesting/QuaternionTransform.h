@@ -15,5 +15,9 @@ struct QuaternionTransform
 };
 
 void make_worldmatrix(QuaternionTransform const&, XMFLOAT4X4&);
+
+/// rotate by a number of degrees around the current axis of rotation.
+void rotate_degrees(QuaternionTransform &, float);
+
 XMFLOAT4X4 make_worldmatrix(QuaternionTransform const&);
 ostream& operator<<(ostream& os, QuaternionTransform const& at);

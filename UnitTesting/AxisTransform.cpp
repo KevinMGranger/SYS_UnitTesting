@@ -21,12 +21,17 @@ void make_worldmatrix(AxisTransform const& at, XMFLOAT4X4 &mat)
 	XMMATRIX scale_mat = XMMatrixScalingFromVector(scale_vec);
 
 	XMVECTOR rotat_vec = XMLoadFloat3(&at.axis);
-	float angle = at.rotation_amount;
+	float angle = XMConvertToRadians(at.rotation_amount);
 	XMMATRIX rotat_mat = XMMatrixRotationAxis(rotat_vec, angle);
 
 	XMMATRIX world = scale_mat * rotat_mat * trans_mat;
 
 	XMStoreFloat4x4(&mat, world);
+}
+
+void rotate_degrees(AxisTransform &at, float amount)
+{
+	at.rotation_amount += amount;
 }
 
 XMFLOAT4X4 make_worldmatrix(AxisTransform const& at)

@@ -23,6 +23,7 @@
     <ProjectGuid>{8D29410E-0D4D-49CD-9AD1-05D755C0574A}</ProjectGuid>
     <RootNamespace>UnitTesting</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>kmg2728_UnitTesting</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -131,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AxisTransform.cpp" />
+    <ClCompile Include="Catch_Main.cpp" />
     <ClCompile Include="QuaternionTransform.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Util.cpp" />

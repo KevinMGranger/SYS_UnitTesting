@@ -28,6 +28,23 @@ void make_worldmatrix(QuaternionTransform const& qt, XMFLOAT4X4 &mat)
 	XMStoreFloat4x4(&mat, world);
 }
 
+void rotate_degrees(QuaternionTransform &qt, float amt)
+{
+	XMVECTOR quat = XMLoadFloat4(&qt.quat);
+
+	XMVECTOR axis;
+	float angle;
+	XMQuaternionToAxisAngle(&axis, &angle, quat);
+
+	angle = XMConvertToDegrees(angle);
+	angle += amt;
+	angle = XMConvertToRadians(angle);
+
+	quat = XMQuaternionRotationAxis(axis, angle);
+
+	XMStoreFloat4(&qt.quat, quat);
+}
+
 XMFLOAT4X4 make_worldmatrix(QuaternionTransform const& qt)
 {
 	XMFLOAT4X4 mat;
