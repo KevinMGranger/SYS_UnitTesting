@@ -1,5 +1,7 @@
 #pragma once
 
+/// Util.h contains utility and convenience functions.
+
 #include <DirectXMath.h>
 #include <iostream>
 
